@@ -21,7 +21,7 @@ Add new dependency to container
 
 ```go
 // Signature:
-Register(name string, dep interface{})
+Register(name string, dep any)
 
 // Example:
 cnt.Register("app-name", "My App")
@@ -31,11 +31,11 @@ cnt.Register("app-name", "My App")
 
 Get dependency. this function return false as second return value if dependency not exists.
 
-**Caution:** Resolve return data as `interface{}` type. if you need to parse data as special type use helper parser methods described later.
+**Caution:** Resolve return data as `any` type. if you need to parse data as special type use helper parser methods described later.
 
 ```go
 // Signature:
-Resolve(name string) (interface{}, bool)
+Resolve(name string) (any, bool)
 
 // Example:
 appName, exists := cnt.Resolve("app-name") // => "My App", true

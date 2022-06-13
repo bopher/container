@@ -3,14 +3,14 @@ package container
 import "github.com/bopher/caster"
 
 type cDriver struct {
-	dependencies map[string]interface{}
+	dependencies map[string]any
 }
 
-func (this *cDriver) Register(name string, dep interface{}) {
+func (this *cDriver) Register(name string, dep any) {
 	this.dependencies[name] = dep
 }
 
-func (this cDriver) Resolve(name string) (interface{}, bool) {
+func (this cDriver) Resolve(name string) (any, bool) {
 	dep, exists := this.dependencies[name]
 	return dep, exists
 }
